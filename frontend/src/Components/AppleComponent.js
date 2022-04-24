@@ -13,9 +13,29 @@ function AppleComponent() {
           return `John owes us ${Math.abs(numberOfApples)} apples`
         }
       }
+
+      function IncreaseApple(){
+        setNumberOfApples((currentValue) => currentValue + 1)
+      }
+      function DecreaseApple(){
+        setNumberOfApples((currentValue) => currentValue - 1)
+      }
+
+    function TooManyDisplay(){
+        if(numberOfApples > 10){
+            return <h1>John has too many apples</h1>
+        } else {
+            return ''
+        }
+    }
+
     return ( 
     <div>
         <h1>{AppleDisplay(numberOfApples)}</h1>
+        <button onClick={IncreaseApple}className='add-btn'>Increase</button>
+        <button style={{display: numberOfApples <= 0 ? "None" : ""}}onClick={DecreaseApple}className='decrease-btn'>Decrease</button>
+        {/* {TooManyDisplay()} */}
+        {numberOfApples > 10 ? <h1>John has too many apples</h1> : ""}
     </div>
     )
 }

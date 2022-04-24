@@ -1,8 +1,8 @@
 import React from 'react'
 
 function TestComponent() {
-    return ( <
-        div > TestComponent < /div>
+    return ( 
+    <div> TestComponent </div>
     )
 }
 
