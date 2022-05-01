@@ -1,42 +1,20 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom';
+
+//MUI Imports
 import { Button, Typography, Grid, AppBar, Toolbar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import {Link} from 'react-router-dom';
+
+//Components
+
 import CustomCard from './CustomCard';
-import CssBaseline from '@mui/material/CssBaseline';
+import Header from './Header';
+
+//Assets
 import city from './Assets/city.jpg'
 
+
 const useStyles = makeStyles({
-  leftNav: {
-      marginRight: 'auto'
-  },
-  rightNav: {
-      marginLeft: 'auto',
-      marginRight: '10rem'
-  },
-
-  propertyBtn: {
-      backgroundColor: 'green',
-      color: 'white',
-      width: "15rem",
-      fontSize: "1.1rem",
-      marginRight: "1rem",
-      '&:hover': {
-        backgroundColor: 'blue',
-    }
-  },
-
-  loginBtn: {
-      backgroundColor: 'white',
-      color: 'black',
-      width: "15rem",
-      fontSize: "1.1rem",
-      marginLeft: "1rem",
-      '&:hover': {
-          backgroundColor: 'green',
-      }
-  },
-
   cityImg: {
       width: '100%',
       height: '92vh'
@@ -70,34 +48,7 @@ function Home() {
     const classes = useStyles();
     return (
       <>
-      <CssBaseline />
-      <AppBar position="static" style={{backgroundColor: 'black' }} >
-        <Toolbar>
-            <div className={classes.leftNav}>
-            <Button color="inherit">
-                <Typography variant="h4">LBREP</Typography>{" "}
-            </Button>
-            </div>
-            <div>
-            <Button color="inherit" style={{marginRight: '2rem'}}>
-                <Typography variant='h6'>Listings</Typography>{" "}
-                </Button>
-          <Button color="inherit" style={{marginLeft: '2rem'}}>
-          <Typography variant='h6'>Agencies</Typography>{" "}
-              </Button>
-            </div>
-            <div className={classes.rightNav}>
-            <Button  className={classes.propertyBtn}>
-            <Typography>Add Property</Typography>
-            </Button>
-          <Button  className={classes.loginBtn}>
-          <Typography>Login</Typography>
-              </Button>
-            </div>
-          
-          
-        </Toolbar>
-      </AppBar>
+      
       <div style={{position: 'relative'}}>
       <img src={city} className={classes.cityImg} />
       <div className={classes.overlayText}>
