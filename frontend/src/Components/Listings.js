@@ -2,15 +2,28 @@ import React from 'react'
 
 //react leaflet
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import {Icon} from 'leaflet'
 //MUI
 import {Grid, AppBar, Typography} from '@mui/material';
 
 //Map icons
-import houseIconPng from './Assets/Mapicons/houseonIcPng'
-import apartmentIconPng from './Assets/Mapicons/apartmentIconPng'
-import houseIconPng from './Assets/Mapicons/houseIconPng'
+import houseIconPng from './Assets/Mapicons/house.png'
+import apartmentIconPng from './Assets/Mapicons/apartment.png'
+import officeIconPng from './Assets/Mapicons/office.png'
 
 function Listings() {
+  const houseIcon = new Icon({
+    iconUrl: houseIconPng,
+    iconSize: [40, 40],
+  })
+  const apartmentIcon = new Icon({
+    iconUrl: apartmentIconPng,
+    iconSize: [40, 40],
+  })
+  const officeIcon = new Icon({
+    iconUrl: officeIconPng,
+    iconSize: [40, 40],
+  })
     return ( 
       <Grid container>
         <Grid item xs={4}>
@@ -28,7 +41,8 @@ function Listings() {
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       //url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
     />
-    <Marker position={[51.505, -0.09]}>
+    <Marker 
+    icon={officeIcon} position={[51.505, -0.09]}>
     {/* <Popup>
       A pretty CSS3 popup. <br /> Easily customizable.
     </Popup> */}
