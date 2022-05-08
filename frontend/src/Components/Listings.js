@@ -20,14 +20,23 @@ const useStyles = makeStyles({
   cardStyle: {
     margin: '0.5rem', 
     border: '1px solid black',
+    position: 'relative',
   },
   pictureStyle: {
     paddingRight: '1rem', 
     paddingLeft: '1rem', 
     height: '20rem',
     width: '30rem',
-    
-  }
+  },
+  priceOverlay:{
+    position: 'absolute',
+    backgroundColor: 'green',
+    zindex: '1000', 
+    color: 'white',
+    top: '100px',
+    left: '20px',
+    padding: '5px',
+  },
 
 })
 
@@ -94,6 +103,18 @@ function Listings() {
           {listing.description.substring(0,200)}...
         </Typography>
       </CardContent>
+
+      {listing.property_status === 'Sale' ? (<Typography className={classes.priceOverlay}>
+        {listing.listing_type}: 
+        ${listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Typography>) : 
+      (<Typography className={classes.priceOverlay}>
+        {listing.listing_type}: 
+        ${listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+      / {listing.rental_frequency}
+      </Typography>)
+      }
+
+      
       {/* <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
@@ -106,7 +127,7 @@ function Listings() {
             )
           })}
         </Grid>
-        <Grid item xs={8}>          
+        <Grid item xs={8} style={{marginTop: "0.5rem"}}>          
         <AppBar position="sticky">
         <div style={{height: '100vh'}}>
        <MapContainer center={[51.505, -0.09]} zoom={14} scrollWheelZoom={true}>
