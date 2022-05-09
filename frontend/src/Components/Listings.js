@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 //react leaflet
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, Marker, Popup,  Polyline, Polygon } from 'react-leaflet';
 import {Icon} from 'leaflet'
 //MUI
 import {Grid, AppBar, Typography, Button, Card, CardHeader, CardMedia, CardContent} from '@mui/material';
@@ -15,6 +15,8 @@ import officeIconPng from './Assets/Mapicons/office.png'
 //Assets
 import img1 from './Assets/img1.jpg'
 import myListings from './Assets/Data/Dummydata';
+import polygonOne from './Shape';
+
 
 const useStyles = makeStyles({
   cardStyle: {
@@ -78,6 +80,14 @@ function Listings() {
     setLongitude(-0.08836028869962749)
   }
 
+  const polyOne = [
+    [51.505, -0.09],
+    [51.51, -0.1],
+    [51.51, -0.12],
+  ]
+
+
+
     return ( 
       <Grid container>
         <Grid item xs={4}>
@@ -136,6 +146,9 @@ function Listings() {
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       //url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
     />
+
+    <Polyline positions={polyOne} weight={10} color="green"/>
+        <Polygon positions={polygonOne} color="yellow" fillColor='blue' fillOpacity={0.9} opacity={0}/>
       {myListings.map((listing)=>{
         function IconDisplay(){
           if(listing.listing_type === 'House'){
