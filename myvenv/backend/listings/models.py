@@ -1,8 +1,10 @@
 from pydoc import describe
 from random import choices
 from time import timezone
-from django.db import models
+from django.contrib.gis.db import models
 from django.utils import timezone
+from django.contrib.gis.geos import Point
+
 
 # Create your models here.
 class Listing(models.model):
@@ -43,4 +45,6 @@ class Listing(models.model):
     cctv = models.BooleanField(default=False)
     parking = models.BooleanField(default=False)
     date_posted = models.DateTimeField(default=timezone.now)
+    location = models.PointField(blank=True, null=True, SRID=4326)
+
     
