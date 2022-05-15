@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'listings.apps.ListingsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
